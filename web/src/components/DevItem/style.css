@@ -40,11 +40,11 @@ li.dev-item p {
 }
 
 li.dev-item a {
-    color: #564D80;
+    color: #CC5803;
     font-size: 14px;
     text-decoration: none;
 }
 
 li.dev-item a:hover{
-    color: #463F66;
+    color: rgb(173, 74, 3);
 }

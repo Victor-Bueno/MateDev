@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Image, View, Text, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 import MapView, { Marker, Callout } from 'react-native-maps';
-import { requestPremissionAsync, getCurrentPositionAsync } from 'expo-location'
+import { requestPermissionsAsync, getCurrentPositionAsync } from 'expo-location'
 import { MaterialIcons } from '@expo/vector-icons';
 
 import api from '../services/Api';
@@ -14,22 +14,21 @@ function Main({ navigation }) {
 
     useEffect(() => {
         async function loadInitialPosition() {
-            const { granted } = await requestPremissionAsync();
-        };
-
-        if(granted) {
-            const { coords } = await getCurrentPositionAsync({
-                enableHighAccuracy: true,
-            });
-
-            const { latitude, longitude } = coords;
-
-            setCurrentRegion({
-                latitude,
-                longitude,
-                latitudeDelta: 0.04,
-                longitudeDelta: 0.04,
-            })
+            const { granted } = await requestPermissionsAsync();
+            if(granted) {
+                const { coords } = await getCurrentPositionAsync({
+                    enableHighAccuracy: true,
+                });
+    
+                const { latitude, longitude } = coords;
+        
+                setCurrentRegion({
+                    latitude,
+                    longitude,
+                    latitudeDelta: 0.04,
+                    longitudeDelta: 0.04,
+                })
+            }
         }
 
         loadInitialPosition();

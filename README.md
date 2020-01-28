@@ -1,2 +1,2 @@
-# OmniStack.10
-Creations done at an one week course of RocketSeat.
+# MateDev
+Creations done from what I learned at an one week course of RocketSeat.
